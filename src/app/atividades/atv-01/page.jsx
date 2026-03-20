@@ -5,6 +5,7 @@ function Atividade01 () {
         <div class = {styles.tituloAtv}>
             <h1>Atividades 1</h1>
             <p>Componente basico para renderizar tela com react</p>
+            
            
 
 
