@@ -1,0 +1,13 @@
+.adicionarnumero{
+    display: flex;
+    font-size: 1,6rem ;
+    border: 4px blue;
+    flex-direction: column;
+}
+
+.labelcss{
+    display: flex;
+    font-size: 1,6rem ;
+    border: 4px black;
+    flex-direction: column;
+}
