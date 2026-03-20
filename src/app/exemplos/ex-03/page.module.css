@@ -1,8 +1,12 @@
 .adicionarnumero{
     display: flex;
     font-size: 1,6rem ;
-    border: 4px blue;
-    flex-direction: column;
+    border:solid 4px blue;
+    border-radius: 20px;
+    height:100vh;
+    width: 100vh;
+    align-items: center;
+    justify-content: center;
 }
 
 .labelcss{
