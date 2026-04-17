@@ -18,7 +18,6 @@ function Atividade04() {
     }
   }, []);
 
-
   useEffect(() => {
     localStorage.setItem('listaCompras', JSON.stringify(dadosCadastrados));
   }, [dadosCadastrados]);
@@ -55,7 +54,11 @@ function Atividade04() {
           onChange={(e) => setInputValue({ ...inputValue, produto: e.target.value })}
           placeholder="Produto..."
         />
-        <button type="submit">Adicionar</button>
+
+        
+        <button type="submit" className={styles.rgbButton}>
+          Adicionar
+        </button>
       </form>
 
       {dadosCadastrados.length > 0 && <h2>Lista de compras</h2>}
@@ -66,7 +69,12 @@ function Atividade04() {
             <span>
               {item.quantidade}x {item.produto}
             </span>
-            <button onClick={() => handleDelete(item.id)}>
+
+            
+            <button
+              className={styles.rgbButton}
+              onClick={() => handleDelete(item.id)}
+            >
               Excluir
             </button>
           </li>

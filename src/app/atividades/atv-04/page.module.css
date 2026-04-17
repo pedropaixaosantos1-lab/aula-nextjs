@@ -128,3 +128,57 @@
         /* Botão ocupa tudo no mobile */
     }
 }
+.rgbButton {
+  position: relative;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+  background: #111;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.rgbButton::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    purple,
+    red
+  );
+  background-size: 400%;
+  border-radius: 10px;
+  z-index: -1;
+  animation: rgbAnimation 4s linear infinite;
+}
+
+.rgbButton::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #111;
+  border-radius: 6px;
+  z-index: -1;
+}
+
+@keyframes rgbAnimation {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
