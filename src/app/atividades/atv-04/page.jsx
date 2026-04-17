@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './page.module.css';
 
 function Atividade04() {
@@ -11,16 +11,31 @@ function Atividade04() {
   });
   const [dadosCadastrados, setDadosCadastrados] = useState([]);
 
+  useEffect(() => {
+    const dadosSalvos = localStorage.getItem('listaCompras');
+    if (dadosSalvos) {
+      setDadosCadastrados(JSON.parse(dadosSalvos));
+    }
+  }, []);
+
+
+  useEffect(() => {
+    localStorage.setItem('listaCompras', JSON.stringify(dadosCadastrados));
+  }, [dadosCadastrados]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!inputValue.produto || !inputValue.quantidade) return;
 
-    // Adiciona o novo item e gera um ID único
     const novoItem = { ...inputValue, id: Date.now() };
     setDadosCadastrados([...dadosCadastrados, novoItem]);
 
-    // Limpa os campos
     setInputValue({ id: '', quantidade: '', produto: '' });
+  };
+
+  const handleDelete = (id) => {
+    const novaLista = dadosCadastrados.filter(item => item.id !== id);
+    setDadosCadastrados(novaLista);
   };
 
   return (
@@ -48,9 +63,12 @@ function Atividade04() {
       <ul className={styles.lista}>
         {dadosCadastrados.map((item) => (
           <li key={item.id} className={styles.linha}>
-            <span className={styles.conteudo}>
+            <span>
               {item.quantidade}x {item.produto}
             </span>
+            <button onClick={() => handleDelete(item.id)}>
+              Excluir
+            </button>
           </li>
         ))}
       </ul>
